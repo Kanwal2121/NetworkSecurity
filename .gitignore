@@ -1,2 +1,48 @@
-Venv
+# Python cache
+__pycache__/
+*.py[cod]
+*.so
+
+# Environment and dependency files
 .env
+.venv/
+env/
+venv/
+*.egg-info/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# IDE or Editor configs
+.vscode/
+.idea/
+
+# Data files (optional)
+data/
+datasets/
+*.csv
+*.tsv
+*.parquet
+*.jsonl
+*.zip
+*.tar.gz
+
+# Model artifacts
+models/
+*.h5
+*.pkl
+*.joblib
+*.pt
+*.onnx
+
+# Logs and output
+logs/
+*.log
+wandb/
+tensorboard/
+checkpoints/
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
