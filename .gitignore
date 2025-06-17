@@ -17,15 +17,7 @@ venv/
 .vscode/
 .idea/
 
-# Data files (optional)
-data/
-datasets/
-*.csv
-*.tsv
-*.parquet
-*.jsonl
-*.zip
-*.tar.gz
+
 
 # Model artifacts
 models/
