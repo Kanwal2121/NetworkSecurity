@@ -6,7 +6,7 @@ import numpy as np
 from networksecurity.exception.exception import NetworkSecurityException
 from networksecurity.logging.logger import logging
 from networksecurity.entity.config_entity import DataIngestionConfig
-from networksecurity.entity.DataIngestionArtifacts import DataIngestionArtifact
+from networksecurity.entity.Arifacts_Entity import DataIngestionArtifact
 from sklearn.model_selection import train_test_split
 from dotenv import load_dotenv
 load_dotenv()

@@ -21,5 +21,34 @@ class DataIngestionConfig:
         self.collection_name:str=Training_Pipeline.DATA_INGESTION_COLLECTION_NAME
         self.train_test_split_ratio:float=Training_Pipeline.DATA_INGESTION_TRAIN_TEST_SPLIT_RATIO
 
+class DataValidationConfig:
+    def __init__(self,training_pipeline_config:TrainingPipelineConfig):
+        self.data_validation_dir:str=os.path.join(training_pipeline_config.artifacts_dir,Training_Pipeline.DATA_VALIDATION_DIR_NAME)
+        self.valid_data_dir:str=os.path.join(self.data_validation_dir,Training_Pipeline.DATA_VALIDATION_VALIDATED_DATA_DIR_NAME)
+        self.valid_training_data:str=os.path.join(self.valid_data_dir,Training_Pipeline.TRAINING_FILE_PATH)
+        self.valid_test_data:str=os.path.join(self.valid_data_dir,Training_Pipeline.TEST_FILE_PATH)
+
+        self.invalid_data_dir:str=os.path.join(self.data_validation_dir,Training_Pipeline.DATA_VALIDATION_INVALID_DATA_DIR_NAME)
+        self.invalid_training_data:str=os.path.join(self.invalid_data_dir,Training_Pipeline.TRAINING_FILE_PATH)
+        self.invalid_test_data:str=os.path.join(self.invalid_data_dir,Training_Pipeline.TEST_FILE_PATH)
+
+        self.driftreport_dir:str=os.path.join(self.data_validation_dir,Training_Pipeline.DATA_VALIDATION_DRIFT_REPORT_DIR_NAME)
+        self.drift_report_file_path:str=os.path.join(self.driftreport_dir,Training_Pipeline.DATA_VALIDATION_DRIFT_REPORT_NAME)
 
 
+
+
+
+
+class DataTransformationConfig:
+    def __init__(self,training_pipeline_config:TrainingPipelineConfig):
+        self.data_transformation_dir:str=os.path.join(training_pipeline_config.artifacs_dir_name,Training_Pipeline.DATA_TRANSFORMATION_DIR_NAME)
+        self.transformed_data_dir:str=os.path.join(self.data_transformation_dir,Training_Pipeline.DATA_TRANSFORMED_DIR_NAME)
+        self.preprocessor_dir:str=os.path.join(self.data_transformation_dir,Training_Pipeline.PREPROCESSOR_OBJECT_DIR_NAME)
+        self.transformned_train_file_path:str=os.path.join(self.transformed_data_dir,Training_Pipeline.TRAINING_FILE_PATH.replace("csv","npy"))
+        self.transformned_test_file_path:str=os.path.join(self.transformed_data_dir,Training_Pipeline.TEST_FILE_PATH.replace("csv","npy"))
+        
+        self.preprocessor_file_path:str=os.path.join(self.preprocessor_dir,Training_Pipeline.PREPROCESSOR_MODEL)
+
+
+        
