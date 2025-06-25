@@ -42,13 +42,21 @@ class DataValidationConfig:
 
 class DataTransformationConfig:
     def __init__(self,training_pipeline_config:TrainingPipelineConfig):
-        self.data_transformation_dir:str=os.path.join(training_pipeline_config.artifacs_dir_name,Training_Pipeline.DATA_TRANSFORMATION_DIR_NAME)
+        self.data_transformation_dir:str=os.path.join(training_pipeline_config.artifacts_dir,Training_Pipeline.DATA_TRANSFORMATION_DIR_NAME)
         self.transformed_data_dir:str=os.path.join(self.data_transformation_dir,Training_Pipeline.DATA_TRANSFORMED_DIR_NAME)
         self.preprocessor_dir:str=os.path.join(self.data_transformation_dir,Training_Pipeline.PREPROCESSOR_OBJECT_DIR_NAME)
         self.transformned_train_file_path:str=os.path.join(self.transformed_data_dir,Training_Pipeline.TRAINING_FILE_PATH.replace("csv","npy"))
         self.transformned_test_file_path:str=os.path.join(self.transformed_data_dir,Training_Pipeline.TEST_FILE_PATH.replace("csv","npy"))
         
         self.preprocessor_file_path:str=os.path.join(self.preprocessor_dir,Training_Pipeline.PREPROCESSOR_MODEL)
+
+class ModelTrainerConfig:
+    def __init__(self,training_pipeline_config:TrainingPipelineConfig):
+        self.trained_model_dir_name:str=os.path.join(training_pipeline_config.artifacts_dir,Training_Pipeline.MODEL_TRAINER_DIR_NAME)
+        self.trained_model_file_path:str=os.path.join(self.trained_model_dir_name,Training_Pipeline.MODEL_TRAINED_NAME)
+        self.model_expected_score:float=Training_Pipeline.MODEL_EXPECTED_SCORE
+        self.model_underfitting_overfitting_threshold:float=Training_Pipeline.MODEL_OVERFITTING_UNDERFITTING_THRESHOLD
+        
 
 
         

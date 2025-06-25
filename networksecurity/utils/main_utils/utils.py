@@ -8,6 +8,8 @@ from networksecurity.constant import Training_Pipeline
 from networksecurity.logging.logger import logging
 import dill
 import yaml
+from sklearn.model_selection import GridSearchCV
+from sklearn.metrics import r2_score
 
 
 def read_schema_yaml(File_path:str)->dict:
@@ -45,3 +47,48 @@ def save_preprocessor_object(filepath:str,object:object):
             pickle.dump(object,file)
     except Exception as e:
         raise NetworkSecurityException(e,sys)       
+    
+
+def load_object(filepath:str)->object:
+    try:
+      with open(filepath,"rb") as file_object:
+           return  pickle.load(file_object)
+    except Exception as e:
+        raise NetworkSecurityException(e,sys)
+    
+def load_numpy_array(filepath:str)->np.array:
+    try:
+      with open(filepath,"rb") as file_object:
+           return  np.load(file_object)
+    except Exception as e:
+        raise NetworkSecurityException(e,sys)
+
+
+def evaluate_models(X_train:np.array,X_test:np.array,y_train:np.array,y_test:np.array,models:dict)->dict:
+    report:dict={}
+    b_params:dict={}
+    for i in range(len(list(models))):
+        model=list(models.values())[i]
+        #bestparam=params[list(models.keys())[i]]
+
+        #gs=GridSearchCV(model,bestparam,cv=5)
+        #gs.fit(X_train,y_train)
+        #model.set_params(**gs.best_params_)
+        model.fit(X_train,y_train)
+
+        
+
+        predicted_values=model.predict(X_test)
+
+        Score=r2_score(y_test,predicted_values)
+
+        report[list(models.keys())[i]]=Score
+        #b_params[list(models.keys())[i]]=gs.best_params_
+
+
+    return report 
+    
+
+
+    
+
