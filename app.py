@@ -70,7 +70,7 @@ async def predict_route(request: Request, file: UploadFile = File(...)):
 
         print(df.iloc[0])
         print("Calling predict with shape:", df.shape)
-        y_pred = network_model.predict(x=df)  # ✅ Should now work
+        y_pred = network_model.predict(x=df)  # ✅ Should now wo
 
         df['predicted_column'] = y_pred
         df.to_csv('prediction_output/output.csv', index=False)
