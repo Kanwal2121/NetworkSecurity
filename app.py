@@ -2,6 +2,7 @@ import os
 import sys
 import certifi
 import pymongo
+from uvicorn import run as app_run
 from dotenv import load_dotenv
 load_dotenv()
 Mongo_DB_url=os.getenv("Mongodb_url")
